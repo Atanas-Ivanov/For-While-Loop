@@ -1,4 +1,4 @@
-function vowelsSum(input) {
+function lowestSum(input) {
   let text = input[0];
   let sum = 0;
   for (i = 0; i < text.length; i++) {
@@ -24,4 +24,4 @@ function vowelsSum(input) {
   console.log(sum);
 }
 
-vowelsSum(["bamboo"]);
+lowestSum(["bamboo"]);
