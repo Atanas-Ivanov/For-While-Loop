@@ -1,45 +1,34 @@
 function examPreparation(input) {
-  let badGradesLimit = Number(input.shift());
-  let index = 0;
+  let badGradesLimit = Number(input[0]);
+  let index = 1;
   let taskName = input[index];
+  let grade = Number(input[index + 1]);
   let totalScore = 0;
   let numberOfProblems = 0;
-  let lastProblem = "";
+  let lastProblemName = "";
 
   while (taskName !== "Enough") {
-    let grade = Number(input[index + 1]);
     if (grade <= 4) {
       badGradesLimit--;
       if (badGradesLimit === 0) {
-        console.log(`You need a break, ${badGradesLimit} poor grades.`);
+        console.log(`You need a break, ${input[0]} poor grades.`);
         return;
       }
-    } else {
-      totalScore += grade;
-      numberOfProblems++;
-      lastProblem = taskName;
     }
+    totalScore += grade;
+    numberOfProblems++;
+    lastProblemName = taskName;
 
     index += 2;
     taskName = input[index];
+    grade = Number(input[index + 1]);
   }
 
-  let averageScore = (totalScore / (numberOfProblems + 1)).toFixed(2);
-  console.log(`Average score: ${averageScore}`);
-  console.log(`Number of problems: ${numberOfProblems + 1}`);
-  console.log(`Last problem: ${lastProblem}`);
+  let averageScore = totalScore / numberOfProblems;
+  console.log(`Average score: ${averageScore.toFixed(2)}`);
+  console.log(`Number of problems: ${numberOfProblems}`);
+  console.log(`Last problem: ${lastProblemName}`);
 }
 
 // Example usage:
-examPreparation([
-  "3",
-  "Money",
-  "6",
-  "Story",
-  "4",
-  "Spring Time",
-  "5",
-  "Bus",
-  "6",
-  "Enough",
-]);
+examPreparation(["2", "Income", "3", "Game Info", "6", "Best Player", "4"]);
